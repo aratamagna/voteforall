@@ -1,0 +1,14 @@
+infrastructure/chef-repos/umag-sdi-api/knife-config/*pem
+*credentials.tf
+provider-variables.tf
+provider-variables.tfvars
+s3-backend.tf
+.terraform
+*tfstate
+*.tfvars
+*.tfstate.backup
+id_rsa
+id_rsa.pub
+config.js
+*.pem
+data/docker-containers-volumes
