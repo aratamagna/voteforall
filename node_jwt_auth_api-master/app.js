@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 //connect to MongoDB
-mongoose.connect('mongodb://tatsuya:miyuki@18.222.67.253/sirisone');
+mongoose.connect('mongodb://vote4all:lla4etov@ds129085.mlab.com:29085/heroku_709bhsmf');
 var db = mongoose.connection;
 
 //handle mongo error
