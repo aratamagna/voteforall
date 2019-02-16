@@ -14,7 +14,13 @@
 </template>
 
 <script>
+import auth from '../router/auth'
 const axios = require('axios');
+let config = {
+    headers: {
+      'Authorization': 'Bearer ' + auth.getToken()
+    }
+  }
 
 export default {
   data () {
@@ -26,7 +32,7 @@ export default {
   },
   methods: {
     ask () {
-      axios.post('localhost:3000/question', {question: this.question, description: this.description}).then(function (r){
+      axios.post('http://localhost:3000/question', {question: this.question, description: this.description}, config).then(function (r){
       if (r.status==200){
         console.log(r)
       } else {}
