@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "body-parser": "^1.17.1",
-    "cors": "^2.8.4",
+    "cors": "^2.8.5",
     "express": "^4.15.2",
     "jwt-simple": "^0.5.5",
     "moment": "^2.22.2",

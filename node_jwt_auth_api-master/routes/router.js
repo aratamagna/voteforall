@@ -66,6 +66,10 @@ router.get('/user/:id', function (req, res, next) {
 router.get('/profile',middleware.ensureAuthenticated, function (req, res, next) {
 });
 
+router.post('/question', middleware.ensureAuthenticated, function (req, res, next) {
+  console.log(req.body)
+})
+
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
 });
