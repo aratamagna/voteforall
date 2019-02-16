@@ -5,7 +5,7 @@ const axios = require('axios');
 export default {
   login (email, pass, cb) {
     cb = arguments[arguments.length - 1]
-    if (localStorage.token) {
+    if (localStorage.token && localStorage.token != undefined) {
       if (cb) cb(true)
       this.onChange(true)
       return
