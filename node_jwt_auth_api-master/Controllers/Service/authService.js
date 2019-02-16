@@ -8,5 +8,5 @@ exports.createToken = function(user) {
     iat: moment().unix(),
     exp: moment().add(config.AUTH_TOKEN_EXP, "days").unix(),
   };
-  return jwt.encode(payload, config.TOKEN_SECRET);
+  return jwt.encode(payload, "ajdnakjhrawoisjdasljqk4u238975289ru30487293jd42938s294yh2783yjsdpaifvuhbjnfm294yrqQ390TU8YWEHQOIEU");
 };

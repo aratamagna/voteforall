@@ -40,7 +40,7 @@ export default {
 }
 
 function loginToken (email, pass, cb) {
-  axios.post('http://52.15.68.96:3000/login', {username: email, password: pass}).then(function (response) {
+  axios.post('http://localhost:3000/login', {username: email, password: pass}).then(function (response) {
     console.log(response);
     if (response.status == 200) {
       cb({
