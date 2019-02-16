@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+User = require("./user.js");
 
 var QuestionSchema = new mongoose.Schema({
   question: {
@@ -8,10 +9,7 @@ var QuestionSchema = new mongoose.Schema({
     trim: true
   },
   owner: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
+    type: User
   },
   description: {
     type: String,
@@ -26,3 +24,6 @@ var QuestionSchema = new mongoose.Schema({
     default: true
   }
 });
+
+var Question = mongoose.model('Question', Questionchema, 'Question');
+module.exports = Vote;
