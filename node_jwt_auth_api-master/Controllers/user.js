@@ -44,3 +44,11 @@ exports.getUser = function(req, res, next) {
     res.send(obj);
   });
 }
+
+exports.findId = function(id) {
+  console.log(id)
+  User.findById(id, function(err, obj){
+    console.log(obj)
+    return obj;
+  });
+}

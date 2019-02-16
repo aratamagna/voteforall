@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-User = require("./user.js");
+var User = require("./user");
 
 var QuestionSchema = new mongoose.Schema({
   question: {
@@ -9,7 +9,8 @@ var QuestionSchema = new mongoose.Schema({
     trim: true
   },
   owner: {
-    type: User
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
   },
   description: {
     type: String,
@@ -25,5 +26,5 @@ var QuestionSchema = new mongoose.Schema({
   }
 });
 
-var Question = mongoose.model('Question', Questionchema, 'Question');
-module.exports = Vote;
+var Question = mongoose.model('Question', QuestionSchema, 'Question');
+module.exports = Question;

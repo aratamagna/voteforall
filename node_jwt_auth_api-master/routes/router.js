@@ -3,6 +3,7 @@ var router = express.Router();
 var middleware = require('../middleware/middleware');
 var auth = require('../Controllers/auth');
 var user = require('../Controllers/user');
+var question = require('../Controllers/question');
 
 router.get('/', function (req, res, next) {
   res.send("Hello World!");
@@ -67,7 +68,7 @@ router.get('/profile',middleware.ensureAuthenticated, function (req, res, next) 
 });
 
 router.post('/question', middleware.ensureAuthenticated, function (req, res, next) {
-  console.log(req.body)
+  question.insertQuestion(req, res, next)
 })
 
 // GET for logout logout
