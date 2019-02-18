@@ -71,6 +71,9 @@ router.post('/question', middleware.ensureAuthenticated, function (req, res, nex
   question.insertQuestion(req, res, next)
 })
 
+router.get('/question/:id', function (req, res, next) {
+  user.getQuestion(req, res, next);
+});
 // GET for logout logout
 router.get('/logout', function (req, res, next) {
 });
