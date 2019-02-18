@@ -19,8 +19,8 @@ import auth from '../router/auth'
 export default {
   data () {
     return {
-      email: 'joe@example.com',
-      pass: '',
+      email: 'vote4all',
+      pass: 'revo',
       error: false
     }
   },

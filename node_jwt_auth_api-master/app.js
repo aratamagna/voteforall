@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
 //connect to MongoDB
+//{email: 'vote4all@v4a.cl', username: 'vote4all', password: 'revo', passwordConf: 'revo'}
 mongoose.connect('mongodb://vote4all:lla4etov@ds129085.mlab.com:29085/heroku_709bhsmf');
 var db = mongoose.connection;
 
@@ -17,7 +18,6 @@ db.once('open', function () {
 // parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cors());
 
 app.use(cors())
 
