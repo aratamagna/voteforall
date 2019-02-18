@@ -19,7 +19,7 @@ db.once('open', function () {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cors())
+app.use(cors());
 
 // include routes
 var routes = require('./routes/router');
