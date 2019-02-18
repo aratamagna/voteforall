@@ -1,10 +1,12 @@
 /* globals localStorage */
+//01 - TODO Revisar por que no se actualiza el token si en localstorage esta undefined
 
 const axios = require('axios');
 
 export default {
   login (email, pass, cb) {
     cb = arguments[arguments.length - 1]
+    //01
     if (localStorage.token && localStorage.token != undefined) {
       if (cb) cb(true)
       this.onChange(true)
