@@ -60,6 +60,10 @@ router.put('/user', function (req, res, next) {
 
 router.delete('/user', function (req, res) {});
 
+router.get('/user/self', middleware.ensureAuthenticated, function (req, res, next) {
+  user.getUser(req, res, next);
+});
+
 router.get('/user/:id', function (req, res, next) {
   user.getUser(req, res, next);
 });
