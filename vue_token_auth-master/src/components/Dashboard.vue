@@ -2,6 +2,8 @@
   <div>
     <h2>Dashboard</h2>
     <p>Yay you made it {{user.username}}!</p>
+
+    <router-link to="question">Preguntas</router-link>
   </div>
 </template>
 

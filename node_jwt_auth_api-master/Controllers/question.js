@@ -28,6 +28,7 @@ exports.listQuestions = function(req, res, next) {
 }
 
 exports.getQuestion = function(req, res, next) {
+      console.log(req.params);
   Question.findById(req.question, function(err, obj){
     res.send(obj);
   });
