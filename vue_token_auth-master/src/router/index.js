@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import auth from './auth'
 import Login from '../components/Login.vue'
 import Dashboard from '../components/Dashboard.vue'
+import Ask from '../components/Ask.vue'
 import Question from '../components/Question.vue'
 
 function requireAuth (to, from, next) {
@@ -24,6 +25,7 @@ export default new VueRouter({
   routes: [
     { path: '/', component: Login },
     { path: '/dashboard', component: Dashboard, beforeEnter: requireAuth },
+    { path: '/ask', component: Ask, beforeEnter: requireAuth },
     { path: '/question', component: Question, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/logout',
