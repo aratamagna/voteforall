@@ -10,8 +10,9 @@
     </li> -->
   </ul>
   <div>
-    {{showQuestion.question}}
-    {{showQuestion.description}}
+    Pregunta: {{showQuestion.question}}
+    <br>
+    Descripción: {{showQuestion.description}}
   </div>
   </div>
 </template>
