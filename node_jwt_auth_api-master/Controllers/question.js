@@ -28,8 +28,8 @@ exports.listQuestions = function(req, res, next) {
 }
 
 exports.getQuestion = function(req, res, next) {
-      console.log(req.params);
-  Question.findById(req.question, function(err, obj){
+    console.log("asdasd::"+req.params.id);
+    Question.findById(req.params.id, function(err, obj){
     res.send(obj);
   });
 }

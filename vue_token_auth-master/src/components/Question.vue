@@ -50,6 +50,7 @@ export default {
       console.log(id)
       var self = this;
         axios.get('http://localhost:3000/question/'+id, config).then(function (r){
+          console.log('status:'+r.status+' data:'+r.data);
         if (r.status==200){
           console.log(r);
           self.showQuestion = r.data;

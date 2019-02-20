@@ -79,6 +79,7 @@ router.get('/question',middleware.ensureAuthenticated, question.listQuestions);
 
 router.get('/question/:id',middleware.ensureAuthenticated, function (req, res, next) {
   question.getQuestion(req, res, next);
+  console.log('llevo en el router de vuelta ->'+req.params);
 });
 
 // GET for logout logout
