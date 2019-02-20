@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
     <h2>Question</h2>
     <p v-if="$route.query.redirect">
       You need to login first.
@@ -10,11 +11,14 @@
       <button type="submit">Publicar Pregunta.</button>
       <p v-if="error" class="error">hay algo en tu pregunta que lanza error.</p>
     </form>
+
+    <router-link to="dashboard">Volver al Dash</router-link>
   </div>
 </template>
 
 <script>
 import auth from '../router/auth'
+import Header from './Header.vue'
 const axios = require('axios');
 let config = {
     headers: {
@@ -29,6 +33,8 @@ export default {
       description: 'Hallo!',
       error: false
     }
+  },components:{
+    Header
   },
   methods: {
     ask () {

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header />
   <ul id="example-1">
     <li v-for="item in items" @click="getQuestion(item._id)">
       {{ item.question }}
@@ -14,11 +15,14 @@
     <br>
     Descripción: {{showQuestion.description}}
   </div>
+
+    <router-link to="dashboard">Volver al Dash</router-link>
   </div>
 </template>
 
 <script>
 import auth from '../router/auth'
+import Header from './Header.vue'
 const axios = require('axios');
 let config = {
     headers: {
@@ -36,6 +40,8 @@ export default {
 
       }
     }
+  },components:{
+    Header
   },
   methods: {
     listQuestions () {

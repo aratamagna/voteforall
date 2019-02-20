@@ -1,19 +1,12 @@
 <template>
   <div>
-    <Header />
-
-    <h2>Dashboard</h2>
-    <p>Yay you made it {{user.username}}!</p>
-
-    <router-link to="question">Preguntas disponibles</router-link>
-    -
-    <router-link to="ask">Crea tu propia pregunta</router-link>
+    <p>Hola {{user.username}}!</p>
   </div>
 </template>
 
 <script>
 import auth from '../router/auth'
-import Header from './Header.vue'
+
 const axios = require('axios');
 let config = {
     headers: {
@@ -25,12 +18,9 @@ export default {
   data () {
     return {
       user: {
-        username: '',
-        email: ''
+        username: ''
       }
     }
-  },components:{
-    Header
   },
   methods: {
     self () {
