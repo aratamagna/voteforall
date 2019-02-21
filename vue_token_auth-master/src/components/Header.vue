@@ -1,6 +1,8 @@
 <template>
   <div>
     <p>Hola {{user.username}}!</p>
+
+    <p><router-link to="logout">Logout</router-link></p>
   </div>
 </template>
 
