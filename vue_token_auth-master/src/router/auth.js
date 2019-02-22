@@ -12,9 +12,10 @@ export default {
       this.onChange(true)
       return
     }
-    loginToken(email, pass, (res) => {
-      if (res.authenticated) {
-        localStorage.token = res.token
+    loginToken(email, pass, (r) => {
+      console.log(r);
+      if (r.response.status==200) {
+        localStorage.token = r.response.data.token
         if (cb) cb(true)
         this.onChange(true)
       } else {
@@ -43,14 +44,10 @@ export default {
 
 function loginToken (email, pass, cb) {
   axios.post('http://localhost:3000/login', {username: email, password: pass}).then(function (response) {
-    console.log(response);
     if (response.status == 200) {
-      cb({
-        authenticated: true,
-        token: response.data.token
-      })
+      cb({response})
     } else {
-      cb({ authenticated: false })
+      cb({ authenticated: false})
     }
   })
   .catch(function (error) {

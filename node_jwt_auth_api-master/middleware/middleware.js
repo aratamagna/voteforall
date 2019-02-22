@@ -11,7 +11,7 @@ exports.ensureAuthenticated = function(req, res, next) {
 
   var token = req.headers.authorization.split(" ")[1];
   var payload = jwt.decode(token, config.TOKEN_SECRET);
-
+  console.log('token:'+token+' payload:'+payload)
   if(payload.exp <= moment().unix()) {
      return res
      	.status(401)

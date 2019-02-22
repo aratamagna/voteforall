@@ -27,9 +27,12 @@ export default {
   methods: {
     login () {
       auth.login(this.email, this.pass, loggedIn => {
+        console.log('loggedIn:'+loggedIn)
         if (!loggedIn) {
+          console.log("Login fail")
           this.error = true
         } else {
+          console.log("Login succe")
           this.$router.replace(this.$route.query.redirect || '/dashboard')
         }
       })
