@@ -4,6 +4,7 @@ var middleware = require('../middleware/middleware');
 var auth = require('../Controllers/auth');
 var user = require('../Controllers/user');
 var question = require('../Controllers/question');
+var answer = require('../Controllers/answer')
 
 router.get('/', function (req, res, next) {
   res.send("Hello World!");
@@ -80,6 +81,10 @@ router.get('/question',middleware.ensureAuthenticated, question.listQuestions);
 router.get('/question/:id',middleware.ensureAuthenticated, function (req, res, next) {
   question.getQuestion(req, res, next);
 });
+
+router.post('/answer', middleware.ensureAuthenticated, function (req, res, next) {
+  answer.insertAnswer(req, res, next)
+})
 
 // GET for logout logout
 router.get('/logout', function (req, res, next) {

@@ -65,22 +65,22 @@ export default {
         } else {}
         })
     },clickMethod(objQuestion) {
-      var vote = {};
+      var answer = {};
       console.log("Se voto la pregunta..");
         if(confirm(objQuestion.question)) {
-          vote = {
+          answer = {
             questionId: objQuestion._id,
             question: objQuestion,
             answer: true
           }
         } else {
-          vote = {
+          answer = {
             questionId: objQuestion._id,
             question: objQuestion,
             answer: false
           }
         }
-        axios.post('http://localhost:3000/answer', vote, config).then(function (r){
+        axios.post('http://localhost:3000/answer', answer, config).then(function (r){
         if (r.status==200){
           console.log(r)
         } else {}
