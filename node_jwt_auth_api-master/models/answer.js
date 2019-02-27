@@ -1,15 +1,19 @@
 var mongoose = require('mongoose');
-var User = require("./user");
+var Schema = mongoose.Schema;
+var User = mongoose.model('User');
+var Question = mongoose.model('Question');
 
 var AnswerSchema = new mongoose.Schema({
+  question: {
+    type: Schema.ObjectId,
+    ref: "Question"
+  },
   answer: {
-    type: String,
-    unique: false,
-    required: true
+    type: Boolean
   },
   owner: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User'
+    type: Schema.ObjectId,
+    ref: "User"
   },
   iniDate: {
     type: Date,

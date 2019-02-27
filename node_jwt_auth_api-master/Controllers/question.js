@@ -4,20 +4,24 @@ var Question = require('../models/question');
 
 exports.insertQuestion = function(req, res, next) {
 
-  var user = User.findId(req.user);
 
   var questionData = {
-    owner: user,
+    owner: null,
     question: req.body.question,
     description: req.body.description,
   }
 
-  Question.create(questionData, function (error, question) {
-    if (error) {
-      return next(error);
-    } else {
-      res.send(question);
-    }
+  User.findId(req.user, user => {
+
+    questionData.owner = user;
+    
+    Question.create(questionData, function (error, question) {
+      if (error) {
+        return next(error);
+      } else {
+        res.send(question);
+      }
+    });
   });
 }
 
@@ -28,7 +32,7 @@ exports.listQuestions = function(req, res, next) {
 }
 
 exports.getQuestion = function(req, res, next) {
-    Question.findById(req.params.id, function(err, obj){
+  Question.findById(req.params.id, function(err, obj){
     res.send(obj);
   });
 }

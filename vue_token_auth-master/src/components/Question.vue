@@ -64,18 +64,16 @@ export default {
           self.showQuestion = r.data;
         } else {}
         })
-    },clickMethod(objQuestion) {
+    },
+    clickMethod(objQuestion) {
       var answer = {};
-      console.log("Se voto la pregunta..");
         if(confirm(objQuestion.question)) {
           answer = {
-            questionId: objQuestion._id,
             question: objQuestion,
             answer: true
           }
         } else {
           answer = {
-            questionId: objQuestion._id,
             question: objQuestion,
             answer: false
           }

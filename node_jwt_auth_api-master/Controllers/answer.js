@@ -4,20 +4,24 @@ var Answer = require('../models/answer');
 
 exports.insertAnswer = function(req, res, next) {
 
-  var user = User.findId(req.user);
-
-  console.log(req.body);
+// se puede guardar el objeto completo de question si se va a buscar a la bd de la misma forma que user
   var answerData = {
-    answer: JSON.stringify(req.body),
-    owner: user,
+    question: req.body.question,
+    answer: req.body.answer,
+    owner: null,
   }
 
-  Answer.create(answerData, function (error, answer){
-    if (error) {
-      return next(error);
-    } else {
-      res.send(answer);
-    }
+  User.findId(req.user, user => {
+
+    answerData.owner = user;
+
+    Answer.create(answerData, function (error, answer){
+      if (error) {
+        return next(error);
+      } else {
+        res.send(answer);
+      }
+    });
   });
 }
 

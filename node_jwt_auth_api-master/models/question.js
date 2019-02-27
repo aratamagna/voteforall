@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var User = require("./user");
+var Schema = mongoose.Schema;
+var User = mongoose.model('User');
 
 var QuestionSchema = new mongoose.Schema({
   question: {
@@ -9,8 +10,8 @@ var QuestionSchema = new mongoose.Schema({
     trim: true
   },
   owner: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'User'
+    type: Schema.ObjectId,
+    ref: "User"
   },
   description: {
     type: String,

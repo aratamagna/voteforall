@@ -45,10 +45,8 @@ exports.getUser = function(req, res, next) {
   });
 }
 
-exports.findId = function(id) {
-  console.log(id)
+exports.findId = function(id, cb) {
   User.findById(id, function(err, obj){
-    console.log(obj)
-    return obj;
+    return cb(obj);
   });
 }
