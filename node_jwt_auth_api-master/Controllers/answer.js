@@ -4,6 +4,7 @@ var Answer = require('../models/answer');
 
 exports.insertAnswer = function(req, res, next) {
 
+  answerData = {
     question: req.body.question,
     answer: req.body.answer,
     owner: null,

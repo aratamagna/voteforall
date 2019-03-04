@@ -7,7 +7,7 @@
         <b-col>Tus Respuestas
           <b-list-group>
             <b-list-group-item v-for="item in items" @click="getQuestion(item._id)">
-              <b-button v-b-modal.modal1 variant="dark">{{ item.question }}</b-button>
+              <b-button v-b-modal.modal1 variant="dark">{{ item.question }}{{getQuestionResults(item._id)}}</b-button>
               <b-progress class="mt-2" :max="max" show-value>
                 <b-progress-bar :value="100*(6/10)" variant="success" />
                 <b-progress-bar :value="80*(1.5/10)" variant="danger" />
@@ -43,8 +43,8 @@
 
     <div>
       <!-- Modal Component -->
-      <b-modal id="modal1" title="Vote4All" ok-title="De Acuerdo" ok-variant="success" cancel-title="En Desacuerdo" cancel-variant="danger">
-        <p class="my-4">¿Es esta una buena pregunta?</p>
+      <b-modal id="modal1" :title="showQuestion.question" ok-title="De Acuerdo" ok-variant="success" cancel-title="En Desacuerdo" cancel-variant="danger">
+        <p class="my-4">{{showQuestion.description}}</p>
       </b-modal>
     </div>
     <!-- <li v-for="item in items">
