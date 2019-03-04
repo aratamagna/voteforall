@@ -1,26 +1,52 @@
 var mongoose = require('mongoose');
 var User = require('./user');
+var Question = require('../models/question');
 var Answer = require('../models/answer');
+var ObjectId = require('mongoose').Types.ObjectId;
 
-exports.insertAnswer = function(req, res, next) {
+exports.insertAgreeAnswer = function(req, res, next) {
 
   answerData = {
-    question: req.body.question,
-    answer: req.body.answer,
+    question: null,
+    answer: true,
     owner: null,
   }
 
   User.findId(req.user, user => {
-
     answerData.owner = user;
+    Question.findById(new ObjectId(req.params.id), question => {
+      answerData.question = question;
+      Answer.create(answerData, function (error, answer){
+        if (error) {
+          return next(error);
+        } else {
+          res.send(answer);
+        }
+      });
+    })
+  });
+}
 
-    Answer.create(answerData, function (error, answer){
-      if (error) {
-        return next(error);
-      } else {
-        res.send(answer);
-      }
-    });
+exports.insertDisagreeAnswer = function(req, res, next) {
+
+  answerData = {
+    question: null,
+    answer: false,
+    owner: null,
+  }
+
+  User.findId(req.user, user => {
+    answerData.owner = user;
+    Question.findById(new ObjectId(req.params.id), question => {
+      answerData.question = question;
+      Answer.create(answerData, function (error, answer){
+        if (error) {
+          return next(error);
+        } else {
+          res.send(answer);
+        }
+      });
+    })
   });
 }
 
@@ -31,7 +57,7 @@ exports.getAnswer = function(req, res, next) {
 }
 
 exports.groupAnswersByQuestion = function(req, res, next) {
-  var group = Answer.find({question: ObjectId(req.body.question)}).select({"answer": 1, "question": 0, "owner": 0, "iniDate": 1});
+  var group = Answer.find({question: new ObjectId(req.params.id)}).select({"answer": 1});
   group.exec(function (e, c){
     res.send(c);
   })

@@ -43,7 +43,7 @@
 
     <div>
       <!-- Modal Component -->
-      <b-modal id="modal1" :title="showQuestion.question" ok-title="De Acuerdo" ok-variant="success" cancel-title="En Desacuerdo" cancel-variant="danger">
+      <b-modal id="modal1" :title="showQuestion.question" ok-title="De Acuerdo" @ok="agreeAnswer()" ok-variant="success" cancel-title="En Desacuerdo" @cancel="disagreeAnswer()" cancel-variant="danger">
         <p class="my-4">{{showQuestion.description}}</p>
       </b-modal>
     </div>
@@ -77,6 +77,7 @@ export default {
     return {
       items: [],
       showQuestion: {
+        _id: '',
         question: '',
         description: ''
       },
@@ -112,7 +113,7 @@ export default {
     },
     getQuestionResults(id) {
       var self = this;
-      axios.get('http://localhost:3000/question/group/'+id, config).then(function (r){
+      axios.get('http://localhost:3000/answer/group/'+id, config).then(function (r){
         self.currQuestionResult = r.data;
         self.groupQuestionResults();
       })
@@ -125,6 +126,16 @@ export default {
           this.answerGroup.falseCount = this.answerGroup.falseCount+1;
         }
       }
+    },
+    agreeAnswer() {
+      var self = this;
+      axios.get('http://localhost:3000/answer/ok/'+this.showQuestion._id, config).then(function (r){
+      })
+    },
+    disagreeAnswer() {
+      var self = this;
+      axios.get('http://localhost:3000/answer/no/'+this.showQuestion._id, config).then(function (r){
+      })
     },
     clickMethod(objQuestion) {
       var answer = {};

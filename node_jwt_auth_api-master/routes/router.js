@@ -83,7 +83,19 @@ router.get('/question/:id',middleware.ensureAuthenticated, function (req, res, n
 });
 
 router.post('/answer', middleware.ensureAuthenticated, function (req, res, next) {
-  answer.insertAnswer(req, res, next)
+  answer.insertAnswer(req, res, next);
+});
+
+router.get('/answer/ok/:id', middleware.ensureAuthenticated, function (req, res, next) {
+  answer.insertAgreeAnswer(req, res, next);
+});
+
+router.get('/answer/no/:id', middleware.ensureAuthenticated, function (req, res, next) {
+  answer.insertDisagreeAnswer(req, res, next);
+});
+
+router.get('/answer/group/:id', middleware.ensureAuthenticated, function (req, res, next) {
+  answer.groupAnswersByQuestion(req, res, next);
 })
 
 // GET for logout logout
