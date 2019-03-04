@@ -38,7 +38,11 @@ export default {
       showQuestion: {
         question: '',
         description: ''
-
+      },
+      currQuestionResult: [],
+      answerGroup: {
+        trueCount: 0,
+        falseCount: 0
       }
     }
   },components:{
@@ -54,7 +58,7 @@ export default {
       } else {}
       })
     },
-    getQuestion (id) {
+    getQuestion(id) {
       console.log(id)
       var self = this;
         axios.get('http://localhost:3000/question/'+id, config).then(function (r){
@@ -64,6 +68,22 @@ export default {
           self.showQuestion = r.data;
         } else {}
         })
+    },
+    getQuestionResults(id) {
+      var self = this;
+      axios.get('http://localhost:3000/question/group/'+id, config).then(function (r){
+        self.currQuestionResult = r.data;
+        self.groupQuestionResults();
+      })
+    },
+    groupQuestionResults() {
+      for (var i = 0; i < this.currQuestionResult.length; i++) {
+        if (this.currQuestionResult[i].answer) {
+          this.answerGroup.trueCount = this.answerGroup.trueCount+1;
+        } else {
+          this.answerGroup.falseCount = this.answerGroup.falseCount+1;
+        }
+      }
     },
     clickMethod(objQuestion) {
       var answer = {};
