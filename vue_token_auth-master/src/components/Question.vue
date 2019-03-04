@@ -1,23 +1,64 @@
 <template>
   <div>
     <Header />
-  <ul id="example-1">
-    <li v-for="item in items" @click="getQuestion(item._id)">
-      {{ item.question }}
-    </li>
-    -----------------
+
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>Tus Respuestas
+          <b-list-group>
+            <b-list-group-item v-for="item in items" @click="getQuestion(item._id)">
+              <b-button v-b-modal.modal1 variant="dark">{{ item.question }}</b-button>
+              <b-progress class="mt-2" :max="max" show-value>
+                <b-progress-bar :value="100*(6/10)" variant="success" />
+                <b-progress-bar :value="80*(1.5/10)" variant="danger" />
+              </b-progress>
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+        <b-col>Nuevas Preguntas
+          <b-list-group>
+            <b-list-group-item v-for="item in items" @click="getQuestion(item._id)">
+              <b-button v-b-modal.modal1 variant="warning">{{ item.question }}</b-button>
+              <b-progress class="mt-2" :max="max" show-value>
+                <b-progress-bar :value="100*(6/10)" variant="success" />
+                <b-progress-bar :value="80*(1.5/10)" variant="danger" />
+              </b-progress>
+            </b-list-group-item>
+          </b-list-group>
+        </b-col>
+      </b-row>
+      <br><br><br>
+      <b-row>
+        <b-col>1 of 3</b-col>
+        <b-col>
+          <!--router-link to="dashboard">Volver al Dash</router-link-->
+          <b-button  href="dashboard" variant="outline-dark">Volver al Dash</b-button>
+        </b-col>
+        <b-col>3 of 3</b-col>
+      </b-row>
+    </b-container>
+
+
+
+
+    <div>
+      <!-- Modal Component -->
+      <b-modal id="modal1" title="Vote4All" ok-title="De Acuerdo" ok-variant="success" cancel-title="En Desacuerdo" cancel-variant="danger">
+        <p class="my-4">¿Es esta una buena pregunta?</p>
+      </b-modal>
+    </div>
     <!-- <li v-for="item in items">
       <router-link name="getQuestion", params: { userId: item._id }>{{ item.question }}</router-link>
     </li> -->
-  </ul>
-  <div>
+-----------------
+<!--  <div>
     Pregunta: {{showQuestion.question}}
     <br>
     Descripción: {{showQuestion.description}}
   </div>
   <button type=button class="btn btn-primary"  @click="clickMethod(showQuestion)">Votar</button>
+-->
 
-    <router-link to="dashboard">Volver al Dash</router-link>
   </div>
 </template>
 
