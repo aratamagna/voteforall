@@ -39,12 +39,10 @@
           <b-dropdown-item href="#">FA</b-dropdown-item>
         </b-nav-item-dropdown-->
 
-        <b-nav-item-dropdown right>
-          <!-- Using button-content slot -->
-          <template slot="button-content"><em>{{user.username}}</em></template>
-          <!--b-dropdown-item href="#">Profile</b-dropdown-item-->
-          <b-dropdown-item href="logout">Logout</b-dropdown-item>
-        </b-nav-item-dropdown>
+        <b-nav-form right>
+          <b-nav-item href="ask">{{user.username}}</b-nav-item>
+          <b-button href="logout" size="sm" class="my-2 my-sm-0" variant="danger">Logout</b-button>
+        </b-nav-form>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
