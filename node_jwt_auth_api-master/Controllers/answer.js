@@ -14,7 +14,7 @@ exports.insertAgreeAnswer = function(req, res, next) {
 
   User.findId(req.user, user => {
     answerData.owner = user;
-    Question.findById(new ObjectId(req.params.id), question => {
+    Question.findById(new ObjectId(req.params.id), function(e, question) {
       answerData.question = question;
       Answer.create(answerData, function (error, answer){
         if (error) {
@@ -37,7 +37,7 @@ exports.insertDisagreeAnswer = function(req, res, next) {
 
   User.findId(req.user, user => {
     answerData.owner = user;
-    Question.findById(new ObjectId(req.params.id), question => {
+    Question.findById(new ObjectId(req.params.id), function(e, question) {
       answerData.question = question;
       Answer.create(answerData, function (error, answer){
         if (error) {
