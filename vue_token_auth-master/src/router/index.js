@@ -28,6 +28,7 @@ export default new VueRouter({
     { path: '/ask', component: Ask, beforeEnter: requireAuth },
     { path: '/question', component: Question, beforeEnter: requireAuth },
     { path: '/question/id', component: Question, beforeEnter: requireAuth },
+    { path: '/answer/group/id', component: Question, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/logout',
       beforeEnter (to, from, next) {

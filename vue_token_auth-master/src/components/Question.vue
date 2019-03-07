@@ -6,26 +6,19 @@
       <b-row>
         <b-col>Tus Respuestas
           <b-list-group>
-            <b-list-group-item v-for="item in items" @click="getQuestion(item._id)">
+            <b-list-group-item v-for="item in items" v-on:click="getQuestion(item._id)">
               <b-button v-b-modal.modal1 variant="dark">{{ item.question }}</b-button>
-              <b-progress class="mt-2" show-value>
-                <b-progress-bar :value="item.ok" variant="success" />
-                <b-progress-bar :value="item.no" variant="danger" />
-              </b-progress>
             </b-list-group-item>
           </b-list-group>
         </b-col>
-        <b-col>Nuevas Preguntas
+        <!-- <b-col>Nuevas Preguntas
           <b-list-group>
             <b-list-group-item v-for="item in items" @click="getQuestion(item._id)">
               <b-button v-b-modal.modal1 variant="warning">{{ item.question }}</b-button>
-              <b-progress class="mt-2" show-value>
-                <b-progress-bar :value="100*(6/10)" variant="success" />
-                <b-progress-bar :value="80*(1.5/10)" variant="danger" />
-              </b-progress>
+
             </b-list-group-item>
           </b-list-group>
-        </b-col>
+        </b-col> -->
       </b-row>
       <br><br><br>
       <b-row>
@@ -45,6 +38,12 @@
       <!-- Modal Component -->
       <b-modal id="modal1" :title="showQuestion.question" ok-title="De Acuerdo" @ok="agreeAnswer" ok-variant="success" cancel-title="En Desacuerdo" @cancel="disagreeAnswer" cancel-variant="danger">
         <p class="my-4">{{showQuestion.description}}</p>
+        <b-progress class="mt-2" show-value>
+          <b-progress-bar :value="100*(showQuestion.ok/showQuestion.tot)" variant="success" />
+          <b-progress-bar :value="100*(showQuestion.no/showQuestion.tot)" variant="danger" />
+        </b-progress>
+        <p>De Acuerdo: {{showQuestion.ok}}</p>
+        <p>En Desacuerdo: {{showQuestion.no}}</p>
       </b-modal>
     </div>
     <!-- <li v-for="item in items">
@@ -84,11 +83,6 @@ export default {
         ok: 0,
         no: 0,
       },
-      currQuestionResult: [],
-      answerGroup: {
-        trueCount: 0,
-        falseCount: 0
-      }
     }
   },components:{
     Header
@@ -103,20 +97,29 @@ export default {
       })
     },
     getQuestion(id) {
-      console.log(id)
       var self = this;
         axios.get('http://localhost:3000/question/'+id, config).then(function (r){
           console.log('status:'+r.status+' data:'+r.data);
         if (r.status==200){
-          console.log(r);
           self.showQuestion = r.data;
+          self.getQuestionResults(id);
         } else {}
         })
     },
-    getQuestionResults(id, cb) {
+    getQuestionResults(id) {
       var self = this;
+      this.showQuestion.ok = 0;
+      this.showQuestion.no = 0;
       axios.get('http://localhost:3000/answer/group/'+id, config).then(function (r){
-          return cb(r.data);
+        self.showQuestion.tot = r.data.length;
+          for (var i = 0; i < r.data.length; i++) {
+            if (r.data[i].answer==true) {
+              self.showQuestion.ok = self.showQuestion.ok+1;
+            } else {
+              self.showQuestion.no = self.showQuestion.no+1;
+            }
+          }
+          self.$forceUpdate();
       })
     },
     agreeAnswer() {
