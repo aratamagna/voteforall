@@ -8,6 +8,7 @@ import Login from '../components/Login.vue'
 import Dashboard from '../components/Dashboard.vue'
 import Ask from '../components/Ask.vue'
 import Question from '../components/Question.vue'
+import Singin from '../components/Singin.vue'
 
 function requireAuth (to, from, next) {
   if (!auth.loggedIn()) {
@@ -30,6 +31,7 @@ export default new VueRouter({
     { path: '/question/id', component: Question, beforeEnter: requireAuth },
     { path: '/answer/group/id', component: Question, beforeEnter: requireAuth },
     { path: '/login', component: Login },
+    { path: '/singin', component: Singin },
     { path: '/logout',
       beforeEnter (to, from, next) {
         auth.logout()

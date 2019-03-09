@@ -24,6 +24,8 @@
               <b-form-input v-model="email" class="mr-sm-2" type="text" placeholder="Usuario" />
               <b-form-input v-model="pass" class="mr-sm-2" type="password" />
               <b-button size="sm" class="my-2 my-sm-0" type="submit" variant="success">Login</b-button>
+
+              <b-button size="sm" class="my-2 my-sm-0 ml-2" type="button" to="/singin" variant="primary">Registrarme</b-button>
             </b-input-group>
           </b-nav-form>
         </b-navbar-nav>
@@ -38,6 +40,7 @@
 
 <script>
 import auth from '../router/auth'
+var SHA256 = require("crypto-js/sha256");
 
 export default {
   data () {
@@ -49,7 +52,8 @@ export default {
   },
   methods: {
     login () {
-      auth.login(this.email, this.pass, loggedIn => {
+      var passInSHA256 = SHA256(this.pass).toString();
+      auth.login(this.email, passInSHA256, loggedIn => {
         console.log('loggedIn:'+loggedIn)
         if (!loggedIn) {
           console.log("Login fail")

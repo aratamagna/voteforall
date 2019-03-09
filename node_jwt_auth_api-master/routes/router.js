@@ -10,6 +10,10 @@ router.get('/', function (req, res, next) {
   res.send("Hello World!");
 });
 
+router.post('/singin', function (req, res, next) {
+  user.insertUser(req, res, next)
+})
+
 router.post('/login', auth.emailLogin);
 
 router.get('/user',middleware.ensureAuthenticated, user.listUsers);

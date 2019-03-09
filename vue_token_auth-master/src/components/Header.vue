@@ -1,18 +1,5 @@
 <template>
-  <!--div>
-    <b-container class="bv-example-row">
-      <b-row>
-        <b-col>Tus Respuestas
-        </b-col>
-        <b-col>Hola
-          <p>{{user.username}}!</p>
-          <b-button  href="logout" variant="outline-danger">Logout</b-button>
-          <p><router-link to="logout">Logout</router-link></p>
-        </b-col>
-      </b-row>
-    </b-container>
 
-  </div-->
   <div>
   <b-navbar toggleable="lg" type="dark" variant="dark">
     <b-navbar-brand href="#">Vote4All</b-navbar-brand>
