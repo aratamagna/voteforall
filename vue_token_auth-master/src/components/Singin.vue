@@ -71,7 +71,7 @@ export default {
         password: passInSHA256,
         passwordConf: passInSHA256,
       }
-      axios.post('http://localhost:3000/singin', objUser).then(function (r){
+      axios.post(process.env.HOST_URL+'/singin', objUser).then(function (r){
         if (r.status == 200) {
           console.log(r)
         }

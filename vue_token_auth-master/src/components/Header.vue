@@ -57,7 +57,7 @@ export default {
   methods: {
     self () {
       var s = this;
-      axios.get('http://localhost:3000/user/self', config).then(function (r){
+      axios.get(process.env.HOST_URL+'/user/self', config).then(function (r){
       if (r.status==200){
         s.user = r.data;
         console.log(r)

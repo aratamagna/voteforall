@@ -72,7 +72,7 @@ export default {
   methods: {
     ask () {
       console.log("pregunta:"+this.question+ ", description:"+this.description);
-      axios.post('http://localhost:3000/question', {question: this.question, description: this.description}, config).then(function (r){
+      axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description}, config).then(function (r){
       if (r.status==200){
         console.log(r)
       } else {}

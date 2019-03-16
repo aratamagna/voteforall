@@ -90,7 +90,7 @@ export default {
   methods: {
     listQuestions () {
     var self = this;
-      axios.get('http://localhost:3000/question', config).then(function (r){
+      axios.get(process.env.HOST_URL+'/question', config).then(function (r){
       if (r.status==200 || r.status==304){
         self.items = r.data;
       } else {}
@@ -98,7 +98,7 @@ export default {
     },
     getQuestion(id) {
       var self = this;
-        axios.get('http://localhost:3000/question/'+id, config).then(function (r){
+        axios.get(process.env.HOST_URL+'/question/'+id, config).then(function (r){
           console.log('status:'+r.status+' data:'+r.data);
         if (r.status==200){
           self.showQuestion = r.data;
@@ -110,7 +110,7 @@ export default {
       var self = this;
       this.showQuestion.ok = 0;
       this.showQuestion.no = 0;
-      axios.get('http://localhost:3000/answer/group/'+id, config).then(function (r){
+      axios.get(process.env.HOST_URL+'/answer/group/'+id, config).then(function (r){
         self.showQuestion.tot = r.data.length;
           for (var i = 0; i < r.data.length; i++) {
             if (r.data[i].answer==true) {
@@ -124,12 +124,12 @@ export default {
     },
     agreeAnswer() {
       var self = this;
-      axios.get('http://localhost:3000/answer/ok/'+this.showQuestion._id, config).then(function (r){
+      axios.get(process.env.HOST_URL+'/answer/ok/'+this.showQuestion._id, config).then(function (r){
       })
     },
     disagreeAnswer() {
       var self = this;
-      axios.get('http://localhost:3000/answer/no/'+this.showQuestion._id, config).then(function (r){
+      axios.get(process.env.HOST_URL+'/answer/no/'+this.showQuestion._id, config).then(function (r){
       })
     },
     /*
@@ -148,7 +148,7 @@ export default {
             answer: false
           }
         }
-        axios.post('http://localhost:3000/answer', answer, config).then(function (r){
+        axios.post(process.env.HOST_URL+'/answer', answer, config).then(function (r){
         if (r.status==200){
           console.log(r)
         } else {}
