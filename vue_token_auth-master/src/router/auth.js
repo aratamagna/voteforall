@@ -43,7 +43,7 @@ export default {
 }
 
 function loginToken (email, pass, cb) {
-  axios.post('http://localhost:3000/login', {username: email, password: pass}).then(function (response) {
+  axios.post(process.env.HOST_URL+'/login', {username: email, password: pass}).then(function (response) {
     if (response.status == 200) {
       cb({response})
     } else {

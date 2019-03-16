@@ -3,10 +3,11 @@ var cors = require('cors')
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var config = require('./config');
 
 //connect to MongoDB
 //{email: 'vote4all@v4a.cl', username: 'vote4all', password: 'revo', passwordConf: 'revo'}
-mongoose.connect('mongodb://vote4all:lla4etov@ds129085.mlab.com:29085/heroku_709bhsmf');
+mongoose.connect(config.HOST_DB);
 var db = mongoose.connection;
 
 //handle mongo error
