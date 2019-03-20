@@ -2,11 +2,10 @@
   <div>
     <b-container class="bv-example-row">
       <div>
-      <b-jumbotron :header="showQuestion.question" :lead="showQuestion.description">
-      <p></p>
+      <h1 class="display-4">{{showQuestion.question}}</h1>
+      <p class="lead">{{showQuestion.description}}</p>
       <p>De Acuerdo: {{showQuestion.ok}}</p>
       <p>En Desacuerdo: {{showQuestion.no}}</p>
-      </b-jumbotron>
       </div>
     </b-container>
     <div>
