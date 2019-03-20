@@ -82,9 +82,17 @@ router.post('/question', middleware.ensureAuthenticated, function (req, res, nex
 
 router.get('/question',middleware.ensureAuthenticated, question.listQuestions);
 
-router.get('/question/:id', function (req, res, next) {
+router.get('/question/:id',middleware.ensureAuthenticated, function (req, res, next) {
   question.getQuestion(req, res, next);
 });
+
+router.get('/pub/question/:id', function (req, res, next) {
+  question.getQuestion(req, res, next);
+});
+
+router.get('/pub/answer/group/:id', function (req, res, next) {
+  answer.groupAnswersByQuestion(req, res, next);
+})
 
 router.post('/answer', middleware.ensureAuthenticated, function (req, res, next) {
   answer.insertAnswer(req, res, next);

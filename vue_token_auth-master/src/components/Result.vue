@@ -58,7 +58,7 @@ export default {
     },
     getQuestion(id) {
       var self = this;
-        axios.get(process.env.HOST_URL+'/question/'+id, config).then(function (r){
+        axios.get(process.env.HOST_URL+'/pub/question/'+id, config).then(function (r){
           console.log('status:'+r.status+' data:'+r.data);
         if (r.status==200){
           self.showQuestion = r.data;
@@ -70,7 +70,7 @@ export default {
       var self = this;
       this.showQuestion.ok = 0;
       this.showQuestion.no = 0;
-      axios.get(process.env.HOST_URL+'/answer/group/'+id, config).then(function (r){
+      axios.get(process.env.HOST_URL+'/pub/answer/group/'+id, config).then(function (r){
         self.showQuestion.tot = r.data.length;
           for (var i = 0; i < r.data.length; i++) {
             if (r.data[i].answer==true) {
