@@ -90,6 +90,14 @@ router.get('/pub/question/:id', function (req, res, next) {
   question.getQuestion(req, res, next);
 });
 
+router.get('/pub/answer/ok/:id', function (req, res, next) {
+  answer.insertAgreeAnswer(req, res, next);
+});
+
+router.get('/pub/answer/no/:id', function (req, res, next) {
+  answer.insertDisagreeAnswer(req, res, next);
+});
+
 router.get('/pub/answer/group/:id', function (req, res, next) {
   answer.groupAnswersByQuestion(req, res, next);
 })

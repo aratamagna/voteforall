@@ -84,12 +84,12 @@ export default {
     },
     agreeAnswer() {
       var self = this;
-      axios.get(process.env.HOST_URL+'/answer/ok/'+this.showQuestion._id, config).then(function (r){
+      axios.get(process.env.HOST_URL+'/pub/answer/ok/'+this.showQuestion._id, config).then(function (r){
       })
     },
     disagreeAnswer() {
       var self = this;
-      axios.get(process.env.HOST_URL+'/answer/no/'+this.showQuestion._id, config).then(function (r){
+      axios.get(process.env.HOST_URL+'/pub/answer/no/'+this.showQuestion._id, config).then(function (r){
       })
     }
   },
