@@ -86,6 +86,8 @@ router.get('/question/:id',middleware.ensureAuthenticated, function (req, res, n
   question.getQuestion(req, res, next);
 });
 
+router.get('/pub/question', question.listQuestions);
+
 router.get('/pub/question/:id', function (req, res, next) {
   question.getQuestion(req, res, next);
 });

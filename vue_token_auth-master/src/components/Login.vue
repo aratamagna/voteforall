@@ -35,12 +35,15 @@
     <p v-if="$route.query.redirect">
       You need to login first.
     </p>
+    <Home/>
   </div>
 </template>
 
 <script>
 import auth from '../router/auth'
 var SHA256 = require("crypto-js/sha256");
+
+import Home from "./Home.vue"
 
 export default {
   data () {
@@ -64,6 +67,8 @@ export default {
         }
       })
     }
+  },components:{
+    Home
   }
 }
 </script>
