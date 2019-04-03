@@ -1,13 +1,24 @@
 <template>
   <div>
     <Header />
-
-    <h2>Dashboard</h2>
     <p>Yay you made it {{user.username}}!</p>
 
-    <router-link to="question">Preguntas disponibles</router-link>
-    -
-    <router-link to="ask">Crea tu propia pregunta</router-link>
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col>
+          <b-alert show>Tus Preguntas</b-alert>
+          <b-list-group v-for='item in questionItems'>
+            <b-list-group-item >{{item.question}}</b-list-group-item>
+          </b-list-group>
+        </b-col>
+        <b-col>
+          <b-alert variant="success" show>Tus respuestas</b-alert>
+          <b-list-group v-for='item in answerItems'>
+            <b-list-group-item >{{item.question}}</b-list-group-item>
+          </b-list-group>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
@@ -24,6 +35,8 @@ let config = {
 export default {
   data () {
     return {
+      questionItems: [],
+      answerItems: [],
       user: {
         username: '',
         email: ''
@@ -41,10 +54,20 @@ export default {
         console.log(r)
       } else {}
       })
+    },
+    selfQuestions () {
+      var self = this;
+      axios.get(process.env.HOST_URL+'/self/question', config).then(function (r){
+        if (r.status==200){
+          self.questionItems = r.data;
+          console.log(r)
+        } else {}
+      })
     }
   },
   mounted(){
     this.self();
+    this.selfQuestions();
   }
 }
 </script>

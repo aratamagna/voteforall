@@ -14,10 +14,12 @@
       @sliding-end="onSlideEnd"
     >
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide v-for="item in items" :caption="item.description" img-blank img-alt="Blank image">
-        <h1>{{ item.question }}</h1>
-        <p>
-        </p>
+      <b-carousel-slide v-for="item in items" caption="" img-blank img-alt="Blank image">
+        <b-jumbotron :header="item.question" :lead="item.description">
+          <p>vote4all</p>
+          <b-button variant="success" href="#">De Acuerdo</b-button>
+          <b-button variant="danger" href="#">En Desacuerdo</b-button>
+        </b-jumbotron>
       </b-carousel-slide>
     </b-carousel>
 

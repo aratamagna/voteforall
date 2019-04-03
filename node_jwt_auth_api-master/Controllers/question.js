@@ -14,7 +14,7 @@ exports.insertQuestion = function(req, res, next) {
   User.findId(req.user, user => {
 
     questionData.owner = user;
-    
+
     Question.create(questionData, function (error, question) {
       if (error) {
         return next(error);
@@ -34,5 +34,13 @@ exports.listQuestions = function(req, res, next) {
 exports.getQuestion = function(req, res, next) {
   Question.findById(req.params.id, function(err, obj){
     res.send(obj);
+  });
+}
+
+exports.getOwnQuestions = function(req, res, next) {
+  User.findId(req.user, user => {
+    Question.find({"owner._id": user}, function(err, obj){
+      res.send(obj);
+    });
   });
 }
