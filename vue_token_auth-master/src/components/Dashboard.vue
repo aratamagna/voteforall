@@ -14,7 +14,8 @@
         <b-col>
           <b-alert variant="success" show>Tus respuestas</b-alert>
           <b-list-group v-for='item in answerItems'>
-            <b-list-group-item >{{item.question}}</b-list-group-item>
+            <b-list-group-item v-if="item.answer" variant="success">{{item.question}}</b-list-group-item>
+            <b-list-group-item v-else variant="danger">{{item.question}}</b-list-group-item>
           </b-list-group>
         </b-col>
       </b-row>
@@ -51,7 +52,6 @@ export default {
       axios.get(process.env.HOST_URL+'/user/self', config).then(function (r){
       if (r.status==200){
         s.user = r.data;
-        console.log(r)
       } else {}
       })
     },
@@ -60,7 +60,15 @@ export default {
       axios.get(process.env.HOST_URL+'/self/question', config).then(function (r){
         if (r.status==200){
           self.questionItems = r.data;
-          console.log(r)
+        } else {}
+      })
+    },
+    selfAnswers () {
+      var self = this;
+      axios.get(process.env.HOST_URL+'/self/answer', config).then(function (r){
+        if (r.status==200){
+        console.log(r)
+          self.answerItems = r.data;
         } else {}
       })
     }
@@ -68,6 +76,7 @@ export default {
   mounted(){
     this.self();
     this.selfQuestions();
+    this.selfAnswers();
   }
 }
 </script>

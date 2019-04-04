@@ -38,9 +38,7 @@ exports.getQuestion = function(req, res, next) {
 }
 
 exports.getOwnQuestions = function(req, res, next) {
-  console.log("req.user: "+req.user)
   User.findId(req.user, user => {
-    console.log("user: "+user)
     Question.find({"owner": user}, function(err, obj){
       res.send(obj);
     });
