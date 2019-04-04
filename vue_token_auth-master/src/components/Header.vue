@@ -8,8 +8,8 @@
 
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <b-nav-item href="question">Preguntas disponibles</b-nav-item>
-        <b-nav-item href="ask">Crea tu propia pregunta</b-nav-item>
+        <b-nav-item><b-link :to="'/question'">Preguntas disponibles</b-link></b-nav-item>
+        <b-nav-item><b-link :to="'/ask'">Crea tu propia pregunta</b-link></b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
@@ -28,7 +28,7 @@
 
         <b-nav-form right>
           <b-nav-item href="ask">{{user.username}}</b-nav-item>
-          <b-button href="logout" size="sm" class="my-2 my-sm-0" variant="danger">Logout</b-button>
+          <b-link :to="'/logout'">Logout</b-link>
         </b-nav-form>
       </b-navbar-nav>
     </b-collapse>

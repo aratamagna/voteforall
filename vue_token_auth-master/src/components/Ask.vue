@@ -40,16 +40,7 @@
             placeholder="Cual es la descripción?" />
         </b-form-group>
 
-
-        <input type="radio" id="one" value="One" v-model="picked">
-        <label for="one">Publica</label>
-        <br>
-        <input type="radio" id="two" value="Two" v-model="picked">
-        <label for="two">Privada</label>
-        <br>
-        <span>Tu pregunta será: {{ picked }}</span>
-
-        <b-form-group label="Button style radios with outline-primary variant and size lg">
+        <b-form-group label="Como será esxpuesta tu pregunta?">
           <b-form-radio-group
             id="btn-radios-2"
             v-model="selected"
@@ -85,10 +76,10 @@ export default {
       question: '',
       description: '',
       error: false,
-      selected: '1r',
+      selected: '0',
         options: [
-          { text: 'Publica', value: '1r' },
-          { text: 'Privada', value: '0r' }
+          { text: 'Publica', value: '1' },
+          { text: 'Privada', value: '0' }
         ]
     }
   },components:{
