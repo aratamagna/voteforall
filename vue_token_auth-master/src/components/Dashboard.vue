@@ -1,14 +1,12 @@
 <template>
   <div>
     <Header />
-    <p>Yay you made it {{user.username}}!</p>
-
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
           <b-alert show>Tus Preguntas</b-alert>
           <b-list-group v-for='item in questionItems'>
-            <b-list-group-item >{{item.question}}</b-list-group-item>
+            <b-list-group-item><b-link :to="'question/'+item._id">{{item.question}}</b-link></b-list-group-item>
           </b-list-group>
         </b-col>
         <b-col>

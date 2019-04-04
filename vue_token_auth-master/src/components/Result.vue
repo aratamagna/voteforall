@@ -1,11 +1,10 @@
 <template>
   <div>
+    <Header/>
     <b-container class="bv-example-row">
       <div>
       <h1 class="display-4">{{showQuestion.question}}</h1>
       <p class="lead">{{showQuestion.description}}</p>
-      <p>De Acuerdo: {{showQuestion.ok}}</p>
-      <p>En Desacuerdo: {{showQuestion.no}}</p>
       </div>
     </b-container>
     <div>
