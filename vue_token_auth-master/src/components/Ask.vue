@@ -77,7 +77,7 @@ export default {
       options: [
           { text: 'Pública', value: 'radio1' },
           { text: 'Privada', value: 'radio2' }
-      ]
+      ],
       question: '',
       description: '',
       error: false
