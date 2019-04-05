@@ -40,7 +40,7 @@
             placeholder="Cual es la descripción?" />
         </b-form-group>
 
-        <b-form-group label="Como será esxpuesta tu pregunta?">
+        <b-form-group label="Como se exponerá tu pregunta?">
           <b-form-radio-group
             id="btn-radios-2"
             v-model="selected"
@@ -73,14 +73,14 @@ let config = {
 export default {
   data () {
     return {
+      selected: 'radio1',
+      options: [
+          { text: 'Pública', value: 'radio1' },
+          { text: 'Privada', value: 'radio2' }
+      ]
       question: '',
       description: '',
-      error: false,
-      selected: '0',
-        options: [
-          { text: 'Publica', value: '1' },
-          { text: 'Privada', value: '0' }
-        ]
+      error: false
     }
   },components:{
     Header
