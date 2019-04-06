@@ -42,12 +42,11 @@
 
         <b-form-group label="Como se exponerá tu pregunta?">
           <b-form-radio-group
-            id="btn-radios-2"
-            v-model="selected"
+            id="btn-radios"
+            :value="selected"
             :options="options"
             buttons
             button-variant="outline-primary"
-            size="lg"
             name="radio-btn-outline"
           ></b-form-radio-group>
         </b-form-group>
