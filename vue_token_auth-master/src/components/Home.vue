@@ -17,8 +17,8 @@
       <b-carousel-slide v-for="item in items" caption="" img-blank img-alt="Blank image">
         <b-jumbotron :header="item.question" :lead="item.description">
           <p>vote4all</p>
-          <b-button variant="success" href="#">De Acuerdo</b-button>
           <b-button variant="danger" href="#">En Desacuerdo</b-button>
+          <b-button variant="success" href="#">De Acuerdo</b-button>
         </b-jumbotron>
       </b-carousel-slide>
     </b-carousel>
