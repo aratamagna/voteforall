@@ -19,7 +19,7 @@ var QuestionSchema = new mongoose.Schema({
   },
   diffusion: {
     type: Boolean
-  }
+  },
   iniDate: {
     type: Date,
     default: Date.now
