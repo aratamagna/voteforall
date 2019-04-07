@@ -87,10 +87,10 @@ export default {
   methods: {
     ask () {
       let self = this;
-      console.log("pregunta:"+this.question+ ", description:"+this.description+", tipo: "+this.selected);
+      console.log("pregunta:"+this.question+ ", description:"+this.description+", difusion: "+this.selected);
       var idQuestion = '';
 
-      axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description}, config).then(function (r){
+      axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description, diffusion: this.selected}, config).then(function (r){
       if (r.status==200){
         idQuestion = r.data._id;
         self.toQuestion(r.data._id)
