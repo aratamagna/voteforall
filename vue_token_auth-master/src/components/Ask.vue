@@ -15,7 +15,7 @@
     <router-link to="dashboard">Volver al Dash</router-link-->
 
     <div>
-      <b-form @submit.prevent="ask" @submit="onSubmit" @reset="onReset">
+      <b-form @submit.prevent="ask">
         <b-form-group
           label="Haz la pregunta:"
           label-for=""
@@ -40,10 +40,10 @@
             placeholder="Cual es la descripción?" />
         </b-form-group>
 
-        <b-form-group label="Como se exponerá tu pregunta?">
+        <b-form-group label="Como se difunde esta pregunta?">
           <b-form-radio-group
             id="btn-radios"
-            :value="selected"
+            v-model="selected"
             :options="options"
             buttons
             button-variant="outline-primary"
@@ -72,10 +72,10 @@ let config = {
 export default {
   data () {
     return {
-      selected: 'radio1',
+      selected: true,
       options: [
-          { text: 'Pública', value: 'radio1' },
-          { text: 'Privada', value: 'radio2' }
+          { text: 'Pública', value: true },
+          { text: 'Privada', value: false }
       ],
       question: '',
       description: '',
@@ -87,15 +87,17 @@ export default {
   methods: {
     ask () {
       let self = this;
-      console.log("pregunta:"+this.question+ ", description:"+this.description);
+      console.log("pregunta:"+this.question+ ", description:"+this.description+", tipo: "+this.selected);
       var idQuestion = '';
 
+/*
       axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description}, config).then(function (r){
       if (r.status==200){
         idQuestion = r.data._id;
         self.toQuestion(r.data._id)
       } else {}
       })
+      */
       console.log('datos=' + idQuestion)
       //alert(idQuestion)
       //this.toQuestion (idQuestion)
