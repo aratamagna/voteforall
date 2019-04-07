@@ -90,14 +90,12 @@ export default {
       console.log("pregunta:"+this.question+ ", description:"+this.description+", tipo: "+this.selected);
       var idQuestion = '';
 
-/*
       axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description}, config).then(function (r){
       if (r.status==200){
         idQuestion = r.data._id;
         self.toQuestion(r.data._id)
       } else {}
       })
-      */
       console.log('datos=' + idQuestion)
       //alert(idQuestion)
       //this.toQuestion (idQuestion)
