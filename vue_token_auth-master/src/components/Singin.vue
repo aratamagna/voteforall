@@ -1,7 +1,5 @@
 <template>
   <div>
-    <Login />
-
     <b-container fluid class="mt-4 bv-example-row" >
       <b-row>
         <b-col md="6" offset-md="3">
