@@ -12,7 +12,7 @@ exports.insertAgreeAnswer = function(req, res, next) {
     owner: null,
   }
 
-  User.findId(req.user, user => {
+  User.findById(new ObjectId(req.user), user => {
     answerData.owner = user;
     Question.findById(new ObjectId(req.params.id), function(e, question) {
       answerData.question = question;
