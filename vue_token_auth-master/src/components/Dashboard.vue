@@ -12,8 +12,8 @@
         <b-col>
           <b-alert variant="success" show>Tus respuestas</b-alert>
           <b-list-group v-for='item in answerItems'>
-            <b-list-group-item v-if="item.answer" variant="success">{{item.question}}</b-list-group-item>
-            <b-list-group-item v-else variant="danger">{{item.question}}</b-list-group-item>
+            <b-list-group-item v-if="item.answer" variant="success">{{item.question.question}}{{item.question.iniDate}}</b-list-group-item>
+            <b-list-group-item v-else variant="danger">{{item.question.question}}{{item.question.iniDate}}</b-list-group-item>
           </b-list-group>
         </b-col>
       </b-row>
