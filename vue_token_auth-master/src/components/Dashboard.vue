@@ -13,7 +13,6 @@
               </h6>
             </div>
           </div>
-            <b-list-group-item><b-link :to="'question/'+item._id">{{item.question}}</b-link></b-list-group-item>
         </b-col>
         <b-col>
           <b-alert variant="success" show>Tus respuestas</b-alert>
