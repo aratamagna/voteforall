@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
-var User = require('./models/user');
+var User = require('./user');
+var owner = require('./models/user');
 var Question = require('../models/question');
 var Answer = require('../models/answer');
 var ObjectId = require('mongoose').Types.ObjectId;
@@ -12,7 +13,7 @@ exports.insertAgreeAnswer = function(req, res, next) {
     owner: null,
   }
 
-  User.findById(new ObjectId(req.user), user => {
+  owner.findById(new ObjectId(req.user), user => {
     answerData.owner = user;
     Question.findById(new ObjectId(req.params.id), function(e, question) {
       answerData.question = question;
