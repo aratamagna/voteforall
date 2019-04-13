@@ -72,7 +72,7 @@ exports.getOwnAnswers = function(req, res, next) {
           answer: r[i],
           question: null
         };
-        Question.findById(new ObjectId(answer.answer.owner), function (e, o){
+        Question.findById(r[i].owner, function (e, o){
           answer.question = o;
         })
         answers.push(answer);
