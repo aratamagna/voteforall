@@ -68,7 +68,7 @@ exports.getOwnAnswers = function(req, res, next) {
   User.findId(req.user, user => {
     Answer.find({"owner": user}, function (e, r) {
       for (var i = 0; i < r.length; i++) {
-        Question.findById(new ObjectId(), function (e, o){
+        Question.findById(new ObjectId(r[i].question), function (e, o){
           var answer = {
             answer: r[i],
             question: null
