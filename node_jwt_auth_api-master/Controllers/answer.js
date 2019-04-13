@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
-var User = require('./user');
+var User = require('./models/user');
 var Question = require('../models/question');
 var Answer = require('../models/answer');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 exports.insertAgreeAnswer = function(req, res, next) {
 
-  let answerData = {
+  answerData = {
     question: null,
     answer: true,
     owner: null,
