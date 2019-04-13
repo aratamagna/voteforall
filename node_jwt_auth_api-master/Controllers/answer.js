@@ -6,7 +6,7 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 exports.insertAgreeAnswer = function(req, res, next) {
 
-  answerData = {
+  let answerData = {
     question: null,
     answer: true,
     owner: null,

@@ -7,7 +7,7 @@ var question = require('../Controllers/question');
 var answer = require('../Controllers/answer')
 
 router.get('/', function (req, res, next) {
-  res.send("Hello World!");
+  res.send("");
 });
 
 router.post('/singin', function (req, res, next) {
