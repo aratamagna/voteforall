@@ -70,7 +70,7 @@ exports.getOwnAnswers = function(req, res, next) {
       for (var i = 0; i < r.length; i++) {
         var answer = {
           answer: r[i],
-          question: null;
+          question: null
         };
         Question.findById(new ObjectId(r[i].owner), function (e, r){
           answer.question = r;
