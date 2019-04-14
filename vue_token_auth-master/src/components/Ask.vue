@@ -75,6 +75,8 @@ export default {
     return {
       question: '',
       description: '',
+      onSubmit: '',
+      onReset: '',
       error: false,
       selected: '0',
         options: [

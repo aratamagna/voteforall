@@ -5,13 +5,13 @@
       <b-row>
         <b-col>
           <b-alert show>Tus Preguntas</b-alert>
-          <b-list-group v-for='item in questionItems'>
+          <b-list-group v-for='item in questionItems' :key="item.id">
             <b-list-group-item><b-link :to="'question/'+item._id">{{item.question}}</b-link></b-list-group-item>
           </b-list-group>
         </b-col>
         <b-col>
           <b-alert variant="success" show>Tus respuestas</b-alert>
-          <b-list-group v-for='item in answerItems'>
+          <b-list-group v-for='item in answerItems' :key="item.id">
             <b-list-group-item v-if="item.answer" variant="success">{{item.question}}</b-list-group-item>
             <b-list-group-item v-else variant="danger">{{item.question}}</b-list-group-item>
           </b-list-group>

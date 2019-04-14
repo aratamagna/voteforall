@@ -6,7 +6,7 @@
       <b-row>
         <b-col>Tus Respuestas
           <b-list-group>
-            <b-list-group-item v-for="item in items" v-on:click="getQuestion(item._id)">
+            <b-list-group-item v-for="item in items" :key="item.id" v-on:click="getQuestion(item._id)">
               <b-button v-b-modal.modal1 variant="dark">{{ item.question }}</b-button>
             </b-list-group-item>
           </b-list-group>
