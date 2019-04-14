@@ -9,6 +9,7 @@ exports.insertQuestion = function(req, res, next) {
     owner: null,
     question: req.body.question,
     description: req.body.description,
+    diffusion: req.body.diffusion
   }
 
   User.findId(req.user, user => {

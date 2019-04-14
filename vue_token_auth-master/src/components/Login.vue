@@ -20,13 +20,12 @@
             <template slot="button-content"><em>{{user.username}}</em></template-->
             <!--b-dropdown-item href="#">Profile</b-dropdown-item>
             <b-dropdown-item href="logout">Logout</b-dropdown-item-->
-            <b-input-group >
-              <b-form-input v-model="email" class="mr-sm-2" type="text" placeholder="Usuario" />
-              <b-form-input v-model="pass" class="mr-sm-2" type="password" />
-              <b-button size="sm" class="my-2 my-sm-0" type="submit" variant="success">Login</b-button>
-
-              <b-button size="sm" class="my-2 my-sm-0 ml-2" type="button" to="/singin" variant="primary">Registrarme</b-button>
+            <b-input-group>
+              <b-form-input v-model="email" class="" type="text" placeholder="Usuario" />
+              <b-form-input v-model="pass" class="" type="password" placeholder="Contraseña"/>
+              <b-button size="sm" class="" type="submit" variant="success">Login</b-button>
             </b-input-group>
+            <b-button class="ml-2" type="button" to="/singin" variant="primary">Registrarme</b-button>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>
@@ -48,8 +47,8 @@ import Home from "./Home.vue"
 export default {
   data () {
     return {
-      email: 'vote4all',
-      pass: 'revo',
+      email: '',
+      pass: '',
       error: false
     }
   },

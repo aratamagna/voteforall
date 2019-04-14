@@ -6,19 +6,18 @@
       :interval="4000"
       controls
       indicators
-      background="#ababab"
+      background="#427A8D"
       img-width="1024"
       img-height="480"
       style="text-shadow: 1px 1px 2px #333;"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <!-- Slide with blank fluid image to maintain slide aspect ratio -->
-      <b-carousel-slide v-for="item in items" caption="" img-blank img-alt="Blank image">
-        <b-jumbotron :header="item.question" :lead="item.description">
-          <p>vote4all</p>
-          <b-button variant="success" href="#">De Acuerdo</b-button>
+      <b-carousel-slide v-for="item in items" caption="" img-blank img-alt="">
+        <b-jumbotron :header="item.question" :lead="item.description" bg-variant="info" text-variant="white" border-variant="dark">
+          <hr class="my-4">
           <b-button variant="danger" href="#">En Desacuerdo</b-button>
+          <b-button variant="success" href="#">De Acuerdo</b-button>
         </b-jumbotron>
       </b-carousel-slide>
     </b-carousel>

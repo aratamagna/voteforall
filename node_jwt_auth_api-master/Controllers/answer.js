@@ -64,9 +64,8 @@ exports.groupAnswersByQuestion = function(req, res, next) {
 }
 
 exports.getOwnAnswers = function(req, res, next) {
+  var answers = [];
   User.findId(req.user, user => {
-    Answer.find({"owner": user}, function (e, r) {
-      res.send(r);
-    })
+    Answer.find({"owner": user}).populate("question").exec(function (e, r) {res.send(r);})
   });
 }

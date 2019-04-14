@@ -15,7 +15,7 @@
     <router-link to="dashboard">Volver al Dash</router-link-->
 
     <div>
-      <b-form @submit.prevent="ask" @submit="onSubmit" @reset="onReset">
+      <b-form @submit.prevent="ask">
         <b-form-group
           label="Haz la pregunta:"
           label-for=""
@@ -40,14 +40,13 @@
             placeholder="Cual es la descripción?" />
         </b-form-group>
 
-        <b-form-group label="Como será esxpuesta tu pregunta?">
+        <b-form-group label="Como se difunde esta pregunta?">
           <b-form-radio-group
-            id="btn-radios-2"
+            id="btn-radios"
             v-model="selected"
             :options="options"
             buttons
             button-variant="outline-primary"
-            size="lg"
             name="radio-btn-outline"
           ></b-form-radio-group>
         </b-form-group>
@@ -73,16 +72,14 @@ let config = {
 export default {
   data () {
     return {
+      selected: true,
+      options: [
+          { text: 'Pública', value: true },
+          { text: 'Privada', value: false }
+      ],
       question: '',
       description: '',
-      onSubmit: '',
-      onReset: '',
-      error: false,
-      selected: '0',
-        options: [
-          { text: 'Publica', value: '1' },
-          { text: 'Privada', value: '0' }
-        ]
+      error: false
     }
   },components:{
     Header
@@ -90,10 +87,10 @@ export default {
   methods: {
     ask () {
       let self = this;
-      console.log("pregunta:"+this.question+ ", description:"+this.description);
+      console.log("pregunta:"+this.question+ ", description:"+this.description+", difusion: "+this.selected);
       var idQuestion = '';
 
-      axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description}, config).then(function (r){
+      axios.post(process.env.HOST_URL+'/question', {question: this.question, description: this.description, diffusion: this.selected}, config).then(function (r){
       if (r.status==200){
         idQuestion = r.data._id;
         self.toQuestion(r.data._id)

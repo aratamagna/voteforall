@@ -5,15 +5,20 @@
       <b-row>
         <b-col>
           <b-alert show>Tus Preguntas</b-alert>
-          <b-list-group v-for='item in questionItems' :key="item.id">
-            <b-list-group-item><b-link :to="'question/'+item._id">{{item.question}}</b-link></b-list-group-item>
-          </b-list-group>
+          <div class="card" v-for='item in questionItems'>
+            <div class="card-body">
+              <h5 class="card-title"><b-link :to="'question/'+item._id">{{item.question}}</b-link></h5>
+              <h6 class="card-subtitle mb-2 text-muted">
+              {{item.iniDate}}
+              </h6>
+            </div>
+          </div>
         </b-col>
         <b-col>
           <b-alert variant="success" show>Tus respuestas</b-alert>
-          <b-list-group v-for='item in answerItems' :key="item.id">
-            <b-list-group-item v-if="item.answer" variant="success">{{item.question}}</b-list-group-item>
-            <b-list-group-item v-else variant="danger">{{item.question}}</b-list-group-item>
+          <b-list-group v-for='item in answerItems'>
+            <b-list-group-item v-if="item.answer" variant="success">{{item.question.question}}{{item.question.iniDate}}</b-list-group-item>
+            <b-list-group-item v-else variant="danger">{{item.question.question}}{{item.question.iniDate}}</b-list-group-item>
           </b-list-group>
         </b-col>
       </b-row>
