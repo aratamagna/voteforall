@@ -13,7 +13,7 @@
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-      <b-carousel-slide v-for="item in items" caption="" img-blank img-alt="">
+      <b-carousel-slide v-for="item in items" :key="item.id" caption="" img-blank img-alt="">
         <b-jumbotron :header="item.question" :lead="item.description" bg-variant="info" text-variant="white" border-variant="dark">
           <hr class="my-4">
           <b-button variant="danger" href="#">En Desacuerdo</b-button>

@@ -13,7 +13,7 @@
         </b-col>
         <!-- <b-col>Nuevas Preguntas
           <b-list-group>
-            <b-list-group-item v-for="item in items" @click="getQuestion(item._id)">
+            <b-list-group-item v-for="item in items" :key="item.id" @click="getQuestion(item._id)">
               <b-button v-b-modal.modal1 variant="warning">{{ item.question }}</b-button>
 
             </b-list-group-item>
