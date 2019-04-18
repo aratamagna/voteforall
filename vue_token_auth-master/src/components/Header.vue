@@ -60,7 +60,7 @@ export default {
       axios.get(process.env.HOST_URL+'/user/self', config).then(function (r){
       if (r.status==200){
         s.user = r.data;
-        console.log(r)
+        // console.log(r)
       } else {}
       })
     }
