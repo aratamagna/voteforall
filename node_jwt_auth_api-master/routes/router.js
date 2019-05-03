@@ -86,6 +86,10 @@ router.get('/question/:id',middleware.ensureAuthenticated, function (req, res, n
   question.getQuestion(req, res, next);
 });
 
+router.get('/question/p/:id', function (req, res, next) {
+  question.getQuestionPublic(req, res, next);
+});
+
 router.get('/pub/question', question.listQuestions);
 
 router.get('/self/question', middleware.ensureAuthenticated, question.getOwnQuestions);

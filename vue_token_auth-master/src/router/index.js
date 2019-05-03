@@ -10,6 +10,7 @@ import Ask from '../components/Ask.vue'
 import Question from '../components/Question.vue'
 import Card from '../components/Card.vue'
 import Result from '../components/Result.vue'
+import ResultPub from '../components/ResultPub.vue'
 import Singin from '../components/Singin.vue'
 
 function requireAuth (to, from, next) {
@@ -30,7 +31,8 @@ export default new VueRouter({
     { path: '/dashboard', component: Dashboard, beforeEnter: requireAuth },
     { path: '/ask', component: Ask, beforeEnter: requireAuth },
     { path: '/question', component: Question, beforeEnter: requireAuth },
-    { path: '/question/:id', name: 'pregunta', component: Card },
+    { path: '/question/:id', name: 'pregunta', component: Result },
+    { path: '/question/p/:id', name: 'preguntaPublica', component: ResultPub },
     { path: '/answer/group/:id', component: Question, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/singin', component: Singin },
