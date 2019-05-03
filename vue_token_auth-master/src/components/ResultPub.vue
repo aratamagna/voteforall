@@ -28,7 +28,16 @@
             </div>
           </div>
         </b-col>
-        <b-col>2 of 3</b-col>
+        <b-col>Total de Respuestas
+          <p class="lead">{{showQuestion.tot}}</p>
+          <br>
+          De Acuerdo.
+          <p class="lead">{{showQuestion.ok}}</p>
+          <br>
+          Desacuerdo.
+          <p class="lead">{{showQuestion.no}}</p>
+
+        </b-col>
         <b-col>
           <apexchart type=radialBar width=380 :options="chartOptions" @colors="colors" :series="series" />
         </b-col>
