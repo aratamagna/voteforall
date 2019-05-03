@@ -38,6 +38,12 @@ exports.getQuestion = function(req, res, next) {
   });
 }
 
+exports.getQuestionPublic = function(req, res, next) {
+  Question.findById(req.params.id, function(err, obj){
+    res.send(obj);
+  });
+}
+
 exports.getOwnQuestions = function(req, res, next) {
   User.findId(req.user, user => {
     Question.find({"owner": user}, function(err, obj){
