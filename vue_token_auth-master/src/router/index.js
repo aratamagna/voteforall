@@ -8,6 +8,7 @@ import Login from '../components/Login.vue'
 import Dashboard from '../components/Dashboard.vue'
 import Ask from '../components/Ask.vue'
 import Question from '../components/Question.vue'
+import Card from '../components/Card.vue'
 import Result from '../components/Result.vue'
 import Singin from '../components/Singin.vue'
 
@@ -29,7 +30,7 @@ export default new VueRouter({
     { path: '/dashboard', component: Dashboard, beforeEnter: requireAuth },
     { path: '/ask', component: Ask, beforeEnter: requireAuth },
     { path: '/question', component: Question, beforeEnter: requireAuth },
-    { path: '/question/:id', name: 'pregunta', component: Result },
+    { path: '/question/:id', name: 'pregunta', component: Card },
     { path: '/answer/group/:id', component: Question, beforeEnter: requireAuth },
     { path: '/login', component: Login },
     { path: '/singin', component: Singin },
