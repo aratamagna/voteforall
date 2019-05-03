@@ -4,15 +4,7 @@
     <b-container class="bv-example-row">
       <b-row>
         <b-col>
-          <b-alert show>Tus Preguntas</b-alert>
-          <div class="card" v-for="item in questionItems" :key="item.id" >
-            <div class="card-body">
-              <h5 class="card-title"><b-link :to="'question/'+item._id">{{item.question}}</b-link></h5>
-              <h6 class="card-subtitle mb-2 text-muted">
-              {{item.iniDate}}
-              </h6>
-            </div>
-          </div>
+          <Card v-for="item in questionItems" :key="item.id" :questionId="item._id" :open=false />
         </b-col>
         <b-col>
           <b-alert variant="success" show>Tus respuestas</b-alert>
@@ -29,6 +21,7 @@
 <script>
 import auth from '../router/auth'
 import Header from './Header.vue'
+import Card from './Card.vue'
 const axios = require('axios');
 let config = {
     headers: {
@@ -49,7 +42,8 @@ export default {
       }
     }
   },components:{
-    Header
+    Header,
+    Card
   },
   methods: {
     self () {
