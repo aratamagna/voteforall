@@ -1,7 +1,7 @@
 <template>
 
   <div>
-  <b-navbar toggleable="lg" type="dark" variant="dark">
+  <b-navbar toggleable="lg" type="primary" variant="primary">
     <b-navbar-brand href="#" :to="'/dashboard'">Vote4All</b-navbar-brand>
 
     <b-navbar-toggle target="nav_collapse" />
